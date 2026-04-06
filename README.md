@@ -39,13 +39,6 @@ npm install
 npm run dev
 ```
 
-## Data Sources
-
-The hierarchy data (populations, feeding ratios, Will values) comes from:
-- The "Catenan Rankings" diagram printed in *The Will of the Many*
-- Community-verified math analysis of the Totius / Not Totius system
-- Character placements from the [Wikipedia articles](https://en.wikipedia.org/wiki/The_Will_of_the_Many) for both books
-
 ## License
 
 This is a fan project. *The Hierarchy* series is written by James Islington and published by Saga Press. All book content, character names, and world-building belong to the author.

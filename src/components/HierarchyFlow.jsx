@@ -160,6 +160,17 @@ export default function HierarchyFlow() {
         onEnd={endTour}
         onSelectRank={setSelectedRank}
       />
+
+      {/* Buy Me a Coffee */}
+      <a
+        href="https://buymeacoffee.com/burntsoup"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="absolute bottom-3 left-1/2 -translate-x-1/2 z-10
+                   text-[10px] text-slate-500 hover:text-amber-300 transition-colors"
+      >
+        ☕ Buy me a coffee
+      </a>
     </div>
   );
 }
