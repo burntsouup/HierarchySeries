@@ -1,9 +1,7 @@
 import { useState, useCallback } from "react";
 import { Handle, Position } from "@xyflow/react";
 
-/**
- * Colour ramp – rank 1 is the brightest gold, rank 8 the dimmest.
- */
+// Colour ramp: rank 1 (brightest gold) → rank 8 (dimmest).
 const TIER_COLOURS = {
   1: { from: "#fbbf24", to: "#f59e0b", glow: "rgba(251,191,36,0.8)",  text: "#78350f", badge: "#fffbeb" },
   2: { from: "#f59e0b", to: "#d97706", glow: "rgba(245,158,11,0.65)", text: "#78350f", badge: "#fef3c7" },
@@ -77,7 +75,7 @@ export default function TierNode({ data }) {
       className="relative select-none cursor-pointer"
       style={{ width: nodeWidth }}
     >
-      {/* ── Source handles (top) — Will flowing UP to parent tier ── */}
+      {/* Source handles (top) */}
       {Array.from({ length: sourceHandleCount }).map((_, i) => (
         <Handle
           key={`source-${i}`}
@@ -91,7 +89,7 @@ export default function TierNode({ data }) {
         />
       ))}
 
-      {/* ── Target handles (bottom) — Will received FROM child tier ── */}
+      {/* Target handles (bottom) */}
       {Array.from({ length: targetHandleCount }).map((_, i) => (
         <Handle
           key={`target-${i}`}
@@ -116,7 +114,7 @@ export default function TierNode({ data }) {
         />
       )}
 
-      {/* ── Main node card ── */}
+      {/* Main node card */}
       <div
         className="rounded-xl px-5 py-3 text-center border border-white/10
                    transition-all duration-200 relative overflow-visible"
@@ -182,7 +180,7 @@ export default function TierNode({ data }) {
         </div>
       </div>
 
-      {/* ── Character markers below the node ── */}
+      {/* Character markers */}
       {characters.length > 0 && (
         <div className="flex flex-wrap justify-center gap-1.5 mt-2 px-2">
           {characters.map((ch) => (
@@ -205,7 +203,7 @@ export default function TierNode({ data }) {
         </div>
       )}
 
-      {/* ── Tooltip on hover ── */}
+      {/* Tooltip on hover */}
       {hovered && !isSelected && (
         <div
           className="absolute z-50 left-1/2 -translate-x-1/2 mb-2 w-64 rounded-lg

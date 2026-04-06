@@ -1,7 +1,5 @@
 import HIERARCHY_DATA from "../data/hierarchyData";
 
-// ─── Formatting helpers ────────────────────────────────────
-
 export function formatNumber(n) {
   if (n >= 1_000_000) {
     const v = n / 1_000_000;
@@ -20,41 +18,20 @@ export function formatPct(n) {
   return n.toFixed(1) + "%";
 }
 
-/** Format a Will value (may be fractional like 0.5 or 142.75). */
+// Format a Will value (may be fractional).
 export function formatWill(n) {
   if (n >= 1000) return formatNumber(n);
   if (Number.isInteger(n)) return n.toString();
-  // Show up to 2 decimal places, trim trailing zeros
   return parseFloat(n.toFixed(2)).toString();
 }
 
-// ─── Will flow computation ─────────────────────────────────
-
-/**
- * Compute per-person Will flow for every tier (bottom-up).
- *
- * Model (per the books + canonical "Catenan Rankings" image):
- *  - Each person generates 1 base Will unit.
- *  - feedingRatio(R) people of rank R feed 1 person of rank R-1.
- *  - Each tier cedes 50% of its accumulated Will upward (Princeps cedes 0%).
- *  - "Totius" = total Will a person wields (own + received) BEFORE ceding.
- *  - "Not Totius" = Will retained after ceding = Totius × 0.5 (or 100% for Princeps).
- *  - Will is conserved: total retained across all tiers = total generated.
- *
- * @returns {{
- *   byRank: Record<number, TierStats>,
- *   totalPopulation: number,
- *   totalRetained: number,
- *   baseTotius: number,            – Totius of an Octavus (= 1)
- *   tiers: TierStats[]             – ordered by rank ascending (1→8)
- * }}
- */
+// Compute per-person Will flow for every tier (bottom-up).
+// Based on canonical data: each person generates 1 Will, cedes 50% upward.
 export function computeAllWillStats() {
-  // Pre-index feeding ratios for lookups
   const feedingRatioByRank = {};
   for (const t of HIERARCHY_DATA) feedingRatioByRank[t.rank] = t.feedingRatio;
 
-  const sorted = [...HIERARCHY_DATA].sort((a, b) => b.rank - a.rank); // 8→1
+  const sorted = [...HIERARCHY_DATA].sort((a, b) => b.rank - a.rank);
   const byRank = {};
   let prevCededPerPerson = 0;
 

@@ -1,32 +1,9 @@
-/**
- * Hierarchy data from "The Hierarchy" series by James Islington.
+/*
+ * Canonical hierarchy data from James Islington's "The Hierarchy" series.
  *
- * The Catenan Republic's power structure follows a strict mathematical
- * pattern: each tier's population is the factorial of its rank number (R!),
- * and the feeding ratio at each tier equals the rank number.
- *
- *   8 Octavii   → 1 Septimus   (ratio 8)
- *   7 Septimii  → 1 Sextus     (ratio 7)
- *   6 Sexti     → 1 Quintus    (ratio 6)
- *   5 Quinti    → 1 Quartus    (ratio 5)
- *   4 Quarti    → 1 Tertius    (ratio 4)
- *   3 Tertii   → 1 Dimidius   (ratio 3)
- *   2 Dimidii  → 1 Princeps   (ratio 2)
- *
- * Each person generates 1 unit of Will. Each tier cedes 50% of its
- * accumulated Will upward. The Princeps cedes nothing.
- *
- * Each tier object contains:
- *   rank              – 1 (highest, Princeps) to 8 (lowest, Octavus)
- *   latinTitle        – the in-world Latin singular title
- *   latinPlural       – the Latin plural form
- *   englishEquivalent – a plain-English label for accessibility
- *   population        – exact canonical population (R!)
- *   feedingRatio      – how many of this tier feed one person above
- *   willTransferRate  – percentage of total Will ceded upward (50%)
- *   privileges        – short tooltip description
- *   lore              – spoiler-free educational blurb
- *   analogy           – a real-world analogy
+ * Populations follow the factorial pattern (R!) and each tier's feeding
+ * ratio equals its rank number: 8 Octavii → 1 Septimus, 7 Septimii → 1 Sextus, etc.
+ * Every tier cedes 50% of accumulated Will upward. The Princeps keeps everything.
  */
 const HIERARCHY_DATA = [
   {
@@ -145,11 +122,7 @@ const HIERARCHY_DATA = [
 
 export default HIERARCHY_DATA;
 
-/**
- * The three branches of the Catenan Republic.
- * Each branch has its own full 8-tier pyramid (all ranks).
- * Used for character filtering in the character overlay.
- */
+// The three branches of the Catenan Republic.
 export const BRANCHES = [
   {
     id: "governance",

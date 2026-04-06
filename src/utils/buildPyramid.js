@@ -1,21 +1,9 @@
 import HIERARCHY_DATA from "../data/hierarchyData";
 import { computeAllWillStats, formatWill } from "./willMath";
 
-/**
- * Generates React Flow nodes and edges for a width-scaled single-node
- * pyramid layout with variable edge counts matching feeding ratios.
- *
- * Layout:
- *   - One node per tier, width proportional to rank (wider = lower tier).
- *   - Tier 1 (Princeps) at top, Tier 8 (Octavus) at bottom.
- *   - Between tier R and tier R-1: R parallel edges (matching the
- *     feeding ratio — 8 edges from Octavus to Septimus, etc.)
- *
- * @param {number|null}  selectedRank  – currently selected tier (1-8) or null
- * @param {Function}     onSelectTier  – callback when a node is clicked
- * @param {Array}        characters    – filtered character data to show on nodes
- * @returns {{ nodes: Array, edges: Array }}
- */
+// Build React Flow nodes + edges for the pyramid layout.
+// One node per tier, width proportional to rank.
+// Edge count between tiers matches the feeding ratio.
 export function buildPyramid(selectedRank, onSelectTier, characters = []) {
   const willStats = computeAllWillStats();
 
@@ -44,7 +32,6 @@ export function buildPyramid(selectedRank, onSelectTier, characters = []) {
     return MIN_WIDTH + ((rank - 1) / 7) * (MAX_WIDTH - MIN_WIDTH);
   }
 
-  // ── Build nodes ──────────────────────────────────────────
   sorted.forEach((tier) => {
     const { rank } = tier;
     const w = nodeWidth(rank);
@@ -87,8 +74,7 @@ export function buildPyramid(selectedRank, onSelectTier, characters = []) {
     });
   });
 
-  // ── Build edges ──────────────────────────────────────────
-  // Between tier R (child) and tier R-1 (parent): R parallel edges
+  // Edges: R parallel lines between tier R and tier R-1
   for (let rank = 8; rank >= 2; rank--) {
     const childId = `tier-${rank}`;
     const parentId = `tier-${rank - 1}`;

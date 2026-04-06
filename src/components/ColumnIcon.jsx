@@ -1,8 +1,4 @@
-/**
- * A minimal Roman/Ionic column icon, used as the app logo.
- * Rendered as an inline SVG so it scales with text and
- * can inherit colour via currentColor.
- */
+// Minimal Roman column SVG icon — inherits colour via currentColor.
 export default function ColumnIcon({ className = "", size = 16 }) {
   return (
     <svg

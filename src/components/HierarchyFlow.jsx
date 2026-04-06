@@ -17,7 +17,6 @@ import ColumnIcon from "./ColumnIcon";
 import { buildPyramid } from "../utils/buildPyramid";
 import CHARACTER_DATA from "../data/characterData";
 
-/** Register custom node types once (stable reference). */
 const nodeTypes = { tierNode: TierNode };
 
 export default function HierarchyFlow() {
@@ -92,7 +91,7 @@ export default function HierarchyFlow() {
 
   return (
     <div className="relative w-screen h-screen" style={{ background: "#0f172a" }}>
-      {/* ── Top control bar ─────────────────────────────── */}
+      {/* Top control bar */}
       <div
         className="absolute top-4 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2
                     bg-slate-800/80 backdrop-blur-md border border-slate-700 rounded-xl px-4 py-2 shadow-lg"
@@ -119,10 +118,10 @@ export default function HierarchyFlow() {
         <CharacterToggle charOverlay={charOverlay} setCharOverlay={setCharOverlay} />
       </div>
 
-      {/* ── Legend / How It Works ───────────────────────── */}
+      {/* Legend */}
       <Legend />
 
-      {/* ── React Flow canvas ───────────────────────────── */}
+      {/* React Flow canvas */}
       <ReactFlow
         nodes={nodes}
         edges={edges}
@@ -146,7 +145,7 @@ export default function HierarchyFlow() {
         />
       </ReactFlow>
 
-      {/* ── Info side panel ─────────────────────────────── */}
+      {/* Info side panel */}
       {selectedRank !== null && (
         <InfoPanel
           selectedRank={selectedRank}
@@ -155,7 +154,7 @@ export default function HierarchyFlow() {
         />
       )}
 
-      {/* ── Guided tour overlay ─────────────────────────── */}
+      {/* Guided tour */}
       <GuidedTour
         active={tourActive}
         onEnd={endTour}

@@ -1,29 +1,13 @@
-/**
- * Character placements in the Hierarchy, gated by book.
- *
- * Each character has:
- *   id          – unique identifier
- *   name        – display name
- *   rank        – tier number (1-8) in this book
- *   branch      – "governance" | "military" | "religion" | "academy" | "outside"
- *   title       – their specific title (e.g. "Magnus Quintus")
- *   description – one-line, low-spoiler description
- *   book        – 1 or 2 (which book this placement applies to)
- *   deceased    – (optional) true if dead by this book
- *
- * Characters whose tier/branch CHANGES between books appear twice
- * (once per book entry) so readers can see the progression.
- *
- * "academy" branch = pre-graduation (Book 1 only, during the Academy arc).
- * "outside" = characters outside the formal Hierarchy (e.g. the Anguis).
+/*
+ * Character placements in the Hierarchy, gated by book number.
+ * Characters that change tier/branch between books have separate entries.
+ * "academy" = pre-graduation, "outside" = not in the formal Hierarchy.
  */
 
 const CHARACTER_DATA = [
-  // ═══════════════════════════════════════════════════
-  //  BOOK 1 — The Will of the Many
-  // ═══════════════════════════════════════════════════
+  // --- BOOK 1: The Will of the Many ---
 
-  // ── Academy students (not yet assigned a branch) ──
+  // Academy students (not yet assigned a branch)
   {
     id: "vis-b1",
     name: "Vis Telimus",
@@ -85,7 +69,7 @@ const CHARACTER_DATA = [
     book: 1,
   },
 
-  // ── Established Hierarchy members (Book 1) ──
+  // Established Hierarchy members (Book 1)
   {
     id: "ulciscor-b1",
     name: "Ulciscor Telimus",
@@ -147,11 +131,9 @@ const CHARACTER_DATA = [
     book: 1,
   },
 
-  // ═══════════════════════════════════════════════════
-  //  BOOK 2 — The Strength of the Few
-  // ═══════════════════════════════════════════════════
+  // --- BOOK 2: The Strength of the Few ---
 
-  // ── Post-graduation placements ──
+  // Post-graduation placements
   {
     id: "vis-b2",
     name: "Vis Telimus Catenicus",
@@ -203,7 +185,7 @@ const CHARACTER_DATA = [
     book: 2,
   },
 
-  // ── Established members (Book 2) ──
+  // Established members (Book 2)
   {
     id: "ulciscor-b2",
     name: "Ulciscor Telimus",
@@ -285,7 +267,7 @@ const CHARACTER_DATA = [
     book: 2,
   },
 
-  // ── Deceased ──
+  // Deceased
   {
     id: "callidus-b2",
     name: "Callidus Ericius",
@@ -298,7 +280,7 @@ const CHARACTER_DATA = [
     deceased: true,
   },
 
-  // ── Outside the Hierarchy ──
+  // Outside the Hierarchy
   {
     id: "ostius-b2",
     name: "Ostius",
