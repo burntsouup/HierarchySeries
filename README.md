@@ -1,44 +1,39 @@
-# The Hierarchy
+# The Hierarchy Series: Who Feeds Whom
 
-An interactive visualization of the Will system from James Islington's *Hierarchy* book series (*The Will of the Many* and *The Strength of the Few*).
+I found the Will system in James Islington's *Hierarchy* books (*The Will of the Many* and *The Strength of the Few*) hard to keep straight, so I built this page to lay it out visually. It's free, it's a fan project, and it's meant for readers who want the mechanics without re-reading a hundred pages.
 
-**[Live Demo →](https://burntsouup.github.io/HierarchySeries/)**
+**Live site:** https://burntsouup.github.io/HierarchySeries/
 
-![Screenshot](public/og-image.svg)
+## What's on the page
 
-## What is this?
+- A pyramid of the eight ranks, Octavus at the bottom to Princeps at the top. Click a rank to see its strength, how many people cede to it, and how many sit behind it.
+- A "Follow the Will upward" button that walks up the pyramid one rank at a time.
+- An optional character layer. Pick how far you've read (none, Book 1, Books 1–2) and characters show up on their ranks. Nothing past that point is shown.
+- Folded sections for how the maths works, the three branches, a spoiler-light summary of the world, and a glossary.
 
-In the Catenan Republic, citizens are organized into an 8-tier hierarchy where each tier cedes half its accumulated Will — life energy — to the tier above. The structure follows a strict mathematical pattern:
+## Where the numbers come from
 
-- **Factorial populations** — the population at each rank equals R! (40,320 Octavii at the base, 1 Princeps at the top)
-- **Decreasing feeding ratios** — 8 Octavii feed 1 Septimus, 7 Septimii feed 1 Sextus, and so on down to 2 Dimidii feeding 1 Princeps
-- **50% cede rate** — every tier gives up half, the Princeps keeps everything
+Each person cedes half of their Will to the person above them, and the groups feeding each rank get smaller as you climb: 8 Octavii to a Septimus, 7 Septimii to a Sextus, down to 2 Dimidii to the Princeps. Everything else follows from that, using the Will chart on the [Hierarchy wiki](https://hierarchy.fandom.com/wiki/Catenan_Republic):
 
-This app lets you explore that system: click on any tier to see its stats, take a guided tour, or toggle the spoiler-gated character overlay to see where named characters fall in the pyramid.
+- strength at the head of a pyramid: 1, 5, 18.5, 56.5, 142.25, 285.5, 429.25, 430.25
+- people in one full pyramid: 40,320 Octavii up to 1 Princeps, 46,233 in total
+- Republic-wide head counts are rough estimates from the census in Book 1
 
-## Features
+Character placements come from the Wikipedia pages for each book and the same wiki. If you spot something wrong, please [open an issue](https://github.com/burntsouup/HierarchySeries/issues).
 
-- **Width-scaled pyramid** — one node per tier, sized proportionally to represent population
-- **Variable edge counts** — the number of animated lines between tiers matches the canonical feeding ratio (8, 7, 6, 5, 4, 3, 2)
-- **Totius / Not Totius** — both the full power (before ceding) and retained power (after ceding) are displayed, matching the in-book terminology
-- **Guided tour** — 10-step walkthrough of the entire hierarchy from Octavus to Princeps
-- **Spoiler-gated characters** — toggle Book 1 or Book 2 characters onto the pyramid, filterable by branch (Governance, Military, Religion)
-- **Detailed info panel** — click any tier for lore, analogies, Will math, and character placements
-- **Canonical math** — all numbers are derived from the "Catenan Rankings" image in the book and verified against community analysis
-
-## Tech Stack
-
-- [React](https://react.dev/) + [Vite](https://vite.dev/)
-- [React Flow](https://reactflow.dev/) (@xyflow/react) for the interactive diagram
-- [Tailwind CSS](https://tailwindcss.com/) for styling
-
-## Running Locally
+## Running it locally
 
 ```bash
 npm install
 npm run dev
 ```
 
-## License
+`npm run build` makes a production build in `dist/`, and pushing to `main` deploys it to GitHub Pages.
 
-This is a fan project. *The Hierarchy* series is written by James Islington and published by Saga Press. All book content, character names, and world-building belong to the author.
+## Built with
+
+React and Vite, plain CSS. The content lives in `src/data/`.
+
+## Credits
+
+The Hierarchy series belongs to James Islington and Saga Press. This site isn't affiliated with or endorsed by them.
